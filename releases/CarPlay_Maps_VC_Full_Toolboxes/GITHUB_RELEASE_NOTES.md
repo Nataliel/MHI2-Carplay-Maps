@@ -24,7 +24,7 @@ Free and open-source community project by **omonob (QCDWJ)**.<br>
 ### 两种安装方式
 
 1. **MQB Toolbox V4.2A**
-   - 一个完整包支持 MU1102、MU1367、MU1440。
+   - 一个完整包支持 MU1102、MU1367、MU1440；仓库内更新版另支持 MU1427（仅 791）。
    - 在 <code>Customization → CarPlay Maps VC</code> 中选择 791 或 790。
    - 自动识别 MU；安装完成后由用户执行一次完整重启。
 
@@ -56,7 +56,7 @@ This Release contains **complete toolbox distributions** that can be extracted d
 ### Two installation routes
 
 1. **MQB Toolbox V4.2A**
-   - One complete package for MU1102, MU1367 and MU1440.
+   - One complete package for MU1102, MU1367 and MU1440; the updated copy in this repository also supports MU1427 (791 only).
    - Select 791 or 790 under <code>Customization → CarPlay Maps VC</code>.
    - The MU is detected automatically. Perform one full unit reboot after installation.
 
