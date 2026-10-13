@@ -11,6 +11,9 @@ Experimental, not part of the installer. Each variant is the installed MU1427 `c
 | `card-y80-w400` | 30 | 20 frames | map + turn card | 200,80,400,380 | `3e617cae…` |
 | `card-y88-w400` | 30 | 20 frames | map + turn card | 200,88,400,372 | `b1db56ce…` |
 | `card-y96-w400` | 30 | 20 frames | map + turn card | 200,96,400,364 | `173eac54…` |
+| `card-y88-h312` | 30 | 20 frames | map + turn card | 200,88,400,312 | `ef47c948…` |
+| `card-y88-h240` | 30 | 20 frames | map + turn card | 200,88,400,240 | `d0c777cc…` |
+| `card-y88-h160` | 30 | 20 frames | map + turn card | 200,88,400,160 | `3c1d4b9e…` |
 
 The table assumes these patch sites:
 
@@ -40,6 +43,9 @@ Build a variant: `python3 patch-core-tuning.py [--max-fps N] [--keyframe-interva
   - That is why the stock safe-area top (y = 20) put the card's first line under the clock bar.
 - **Next:** the `card-y80/88/96-w400` variants put the card's top just under the strip's top edge, with gaps of roughly 0–20 frame px.
 - **Card size:** the iPhone decides it from the guidance content: start-of-route text, distance, lane guidance, a "then" maneuver. The receiver can't cap its height. Anchoring the card at the top lets extra rows grow down into the map.
+- **Safe-area height:** the `card-y88-h*` variants keep the top at y = 88 and shrink only the height. The aim is to see whether less room makes the iPhone pick a more compact card.
+  - h312 ends at row 400, so the safe area matches the visible strip exactly.
+  - Expected side effects: the car marker moves up, since it is placed inside the safe area. At small heights the card may change layout or not appear at all.
 - **Removed from the menu after testing:** `kf120`, `fps30-kf120`, `card-full`, `card-y120` and `card-y148`. They remain in git history and can be rebuilt with the script.
 
 ## Toolbox menu
