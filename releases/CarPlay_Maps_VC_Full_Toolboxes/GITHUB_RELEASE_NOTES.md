@@ -25,6 +25,7 @@ Free and open-source community project by **omonob (QCDWJ)**.<br>
 
 1. **MQB Toolbox V4.2A**
    - 一个完整包支持 MU1102、MU1367、MU1440；仓库内更新版另支持 MU1427（仅 791）。
+   - MU1427：<code>core.so</code> 已修正仪表视频流的 AES 密钥偏移（AirPlay 210.81），并附带适配 MU1427 的“忽略手机导航状态”补丁（<code>Modifications/Lsd/MU1427/NavActiveIgnore.jar</code>，安装脚本按固件自动选择）。
    - 在 <code>Customization → CarPlay Maps VC</code> 中选择 791 或 790。
    - 自动识别 MU；安装完成后由用户执行一次完整重启。
 
@@ -57,6 +58,7 @@ This Release contains **complete toolbox distributions** that can be extracted d
 
 1. **MQB Toolbox V4.2A**
    - One complete package for MU1102, MU1367 and MU1440; the updated copy in this repository also supports MU1427 (791 only).
+   - MU1427: <code>core.so</code> has the alt-screen AES key offset fixed for AirPlay 210.81. A MU1427-specific "Ignore navigation-active" jar (<code>Modifications/Lsd/MU1427/NavActiveIgnore.jar</code>) is also included, and the install script selects it automatically by firmware.
    - Select 791 or 790 under <code>Customization → CarPlay Maps VC</code>.
    - The MU is detected automatically. Perform one full unit reboot after installation.
 

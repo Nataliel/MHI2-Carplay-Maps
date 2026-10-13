@@ -3,7 +3,7 @@
 - Firmware gate: `/ifs/lsd.jxe` = **52,751,492 bytes**
 - Display: **40 fps, navigation centered**
 - Steering controls: short press zoom; long press map switch
-- Profile core: `payload/profiles/MU1427/791/core.so` (identical to MU1367/791)
+- Profile core: `payload/profiles/MU1427/791/core.so`: the MU1367/791 build with the alt-screen AES key offset fixed for AirPlay 210.81 (`0x1c8` → `0x1c0`, one byte; reapply with [`patch-core-mu1427.py`](./patch-core-mu1427.py))
 - Installer: adds a dedicated `-Xbootclasspath/p:` line to `lsd.sh` (see [`../README.md`](../README.md))
 
 This is a standalone CarPlay Maps VC file set, not a complete toolbox. From this directory on the MMX shell, run `/bin/ksh ./run-install.sh`. The installer performs the exact firmware/profile check again and does not reboot automatically.
