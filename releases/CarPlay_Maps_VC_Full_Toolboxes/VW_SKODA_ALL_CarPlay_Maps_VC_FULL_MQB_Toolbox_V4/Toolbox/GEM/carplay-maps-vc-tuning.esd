@@ -40,5 +40,17 @@ script
     label   "Map + turn card, full-frame safe area (calibration)"
 
 script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y120.sh"
+    label   "30 fps + turn card ~20% lower"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y148.sh"
+    label   "30 fps + turn card ~30% lower"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y120_w400.sh"
+    label   "30 fps + turn card ~20% lower, narrower safe area"
+
+script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
     label   "Show CarPlay Maps VC status (active tuning)"
