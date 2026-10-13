@@ -52,8 +52,8 @@ script
     label   "30 fps + turn card y=88, safe area height 240"
 
 script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_h160.sh"
-    label   "30 fps + turn card y=88, safe area height 160"
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_h160_w480.sh"
+    label   "30 fps + turn card y=88, height 160, original width"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
