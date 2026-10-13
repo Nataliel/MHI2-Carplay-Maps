@@ -1,0 +1,36 @@
+###########################################################################
+# CarPlay Maps VC - experimental stream tuning (MU1427 / 791 only)
+# Each entry swaps core.so; a full unit reboot is required afterwards.
+# Collect diagnostics before rebooting, the logs live in /ramdisk.
+###########################################################################
+screen carplay-maps-vc-tuning carplay-maps-vc
+
+keyValue
+    value   String sys 0x00000000 0
+    label   "Experimental - MU1427 / 791 only"
+    poll    0
+
+keyValue
+    value   String sys 0x00000000 0
+    label   "Reboot after each swap; collect diagnostics first"
+    poll    0
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_stock.sh"
+    label   "Stock: 40 fps, keyframe every 20 frames"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_fps30.sh"
+    label   "30 fps, keyframe every 20 frames"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_kf120.sh"
+    label   "40 fps, keyframe every 120 frames"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_fps30_kf120.sh"
+    label   "30 fps, keyframe every 120 frames"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
+    label   "Show CarPlay Maps VC status (active tuning)"

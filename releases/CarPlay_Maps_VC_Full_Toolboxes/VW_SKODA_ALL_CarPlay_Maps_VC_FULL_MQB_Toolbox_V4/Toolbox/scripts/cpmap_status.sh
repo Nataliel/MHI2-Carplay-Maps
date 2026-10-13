@@ -20,6 +20,11 @@ if [ -s "$ROOT/VERSION" ]; then
     echo "Version: `cat "$ROOT/VERSION"`"
     echo "Profile: `cat "$ROOT/PROFILE" 2>/dev/null`"
     echo "Runtime root: /mnt/app/carplaymaps"
+    tuning="stock (never tuned)"
+    for marker in "$ROOT"/CORE_VARIANT-*; do
+        [ -e "$marker" ] && tuning="${marker##*/CORE_VARIANT-}"
+    done
+    echo "Core tuning: $tuning"
     echo "Encryption watchdog: not installed"
     echo "Startup animation: not installed"
     echo "Music and navigation metadata: not installed"
