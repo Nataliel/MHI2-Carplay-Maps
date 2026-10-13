@@ -21,35 +21,27 @@ script
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_fps30.sh"
-    label   "30 fps, keyframe every 20 frames"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_kf120.sh"
-    label   "40 fps, keyframe every 120 frames"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_fps30_kf120.sh"
-    label   "30 fps, keyframe every 120 frames"
+    label   "30 fps, keyframe every 20 frames (no card)"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card.sh"
-    label   "Map + turn card (stock fps/keyframes)"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_full.sh"
-    label   "Map + turn card, full-frame safe area (calibration)"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y120.sh"
-    label   "30 fps + turn card ~20% lower"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y148.sh"
-    label   "30 fps + turn card ~30% lower"
+    label   "40 fps + turn card, original position"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y120_w400.sh"
-    label   "30 fps + turn card ~20% lower, narrower safe area"
+    label   "30 fps + narrow turn card, top at y=120"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y80_w400.sh"
+    label   "30 fps + narrow turn card, top at y=80"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_w400.sh"
+    label   "30 fps + narrow turn card, top at y=88"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y96_w400.sh"
+    label   "30 fps + narrow turn card, top at y=96"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"

@@ -6,13 +6,11 @@ Experimental, not part of the installer. Each variant is the installed MU1427 `c
 | --- | --- | --- | --- | --- | --- |
 | `stock` | 40 | 20 frames | map | 160,20,480,440 | `46da2689…` |
 | `fps30` | 30 | 20 frames | map | 160,20,480,440 | `b04c09c0…` |
-| `kf120` | 40 | 120 frames | map | 160,20,480,440 | `da0debf0…` |
-| `fps30-kf120` | 30 | 120 frames | map | 160,20,480,440 | `bbfa653e…` |
 | `card` | 40 | 20 frames | map + turn card | 160,20,480,440 | `8ad2e770…` |
-| `card-full` | 40 | 20 frames | map + turn card | 0,0,800,480 | `44b00298…` |
-| `card-y120` | 30 | 20 frames | map + turn card | 160,120,480,340 | `56092dfe…` |
-| `card-y148` | 30 | 20 frames | map + turn card | 160,148,480,312 | `004e7cf9…` |
 | `card-y120-w400` | 30 | 20 frames | map + turn card | 200,120,400,340 | `7afb2ae1…` |
+| `card-y80-w400` | 30 | 20 frames | map + turn card | 200,80,400,380 | `3e617cae…` |
+| `card-y88-w400` | 30 | 20 frames | map + turn card | 200,88,400,372 | `b1db56ce…` |
+| `card-y96-w400` | 30 | 20 frames | map + turn card | 200,96,400,364 | `173eac54…` |
 
 The table assumes these patch sites:
 
@@ -37,8 +35,12 @@ Build a variant: `python3 patch-core-tuning.py [--max-fps N] [--keyframe-interva
 - **Stream:** `fps30` gives no stuttering or lag. With `fps30-kf120`, a change of direction showed up too late on the map, so a keyframe every 20 frames stays. Neither drive logged a slow MOST write, and only 8–11 frames were dropped.
 - **Turn card:** `card` shows the map with Apple's turn card hanging from the top-left of the safe area. The cluster's top status bar (clock, temperature) covers the card's first line.
   - `card-full` shows that the cluster only displays roughly the middle of the 800×480 frame: the card moves to the frame's top-left, behind the left dial.
-- **Next:** the `card-y*` variants lower the safe area's top edge by about 20% and 30% of the frame height, keeping its bottom (y = 460) so the car marker stays roughly where it is.
-  - The iPhone decides the card's size; no receiver setting is known to scale it. `card-y120-w400` checks whether a narrower safe area gives a narrower card.
+- **Second drive:** `card-y120` (160,120,480,340) and `card-y120-w400` (200,120,400,340) both show the card fully, but too far below the top of the map. The narrower safe area gave a narrower card.
+  - In the photos, the cockpit's map strip shows only about frame rows 80–400, cropped from the 800×480 frame. The scale is about 2.5 photo px per frame px, estimated from the width difference between the two cards.
+  - That is why the stock safe-area top (y = 20) put the card's first line under the clock bar.
+- **Next:** the `card-y80/88/96-w400` variants put the card's top just under the strip's top edge, with gaps of roughly 0–20 frame px.
+- **Card size:** the iPhone decides it from the guidance content: start-of-route text, distance, lane guidance, a "then" maneuver. The receiver can't cap its height. Anchoring the card at the top lets extra rows grow down into the map.
+- **Removed from the menu after testing:** `kf120`, `fps30-kf120`, `card-full`, `card-y120` and `card-y148`. They remain in git history and can be rebuilt with the script.
 
 ## Toolbox menu
 

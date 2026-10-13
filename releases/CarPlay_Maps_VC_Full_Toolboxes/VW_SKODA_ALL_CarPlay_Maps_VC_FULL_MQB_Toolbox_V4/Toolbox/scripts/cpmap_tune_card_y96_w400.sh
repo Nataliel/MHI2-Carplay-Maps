@@ -2,5 +2,5 @@
 
 SCRIPTS=/mnt/app/eso/hmi/engdefs/scripts/mqb
 [ -s "$SCRIPTS/cpmap_tune.sh" ] || SCRIPTS=/net/mmx/mnt/app/eso/hmi/engdefs/scripts/mqb
-/bin/ksh "$SCRIPTS/cpmap_tune.sh" fps30-kf120
+/bin/ksh "$SCRIPTS/cpmap_tune.sh" card-y96-w400
 exit $?
