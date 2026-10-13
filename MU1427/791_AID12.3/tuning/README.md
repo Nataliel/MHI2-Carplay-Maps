@@ -1,13 +1,15 @@
-# MU1427 / 791: experimental stream tuning (fps drops, pixelation)
+# MU1427 / 791: experimental stream tuning (fps drops, pixelation, turn card)
 
-Experimental, not part of the installer. Each variant is the installed MU1427 `core.so` (sha256 `46da2689…`) with one or two immediates changed:
+Experimental, not part of the installer. Each variant is the installed MU1427 `core.so` (sha256 `46da2689…`) with a few immediates or the cluster URL changed:
 
-| Variant | maxFPS (cluster, type 111) | Forced keyframe every | sha256 |
-| --- | --- | --- | --- |
-| `stock` | 40 | 20 frames | `46da2689…` |
-| `fps30` | 30 | 20 frames | `b04c09c0…` |
-| `kf120` | 40 | 120 frames | `da0debf0…` |
-| `fps30-kf120` | 30 | 120 frames | `bbfa653e…` |
+| Variant | maxFPS (cluster, type 111) | Forced keyframe every | Cluster content | Safe area (x,y,w,h) | sha256 |
+| --- | --- | --- | --- | --- | --- |
+| `stock` | 40 | 20 frames | map | 160,20,480,440 | `46da2689…` |
+| `fps30` | 30 | 20 frames | map | 160,20,480,440 | `b04c09c0…` |
+| `kf120` | 40 | 120 frames | map | 160,20,480,440 | `da0debf0…` |
+| `fps30-kf120` | 30 | 120 frames | map | 160,20,480,440 | `bbfa653e…` |
+| `card` | 40 | 20 frames | map + turn card | 160,20,480,440 | `8ad2e770…` |
+| `card-full` | 40 | 20 frames | map + turn card | 0,0,800,480 | `44b00298…` |
 
 The table assumes these patch sites:
 
@@ -15,8 +17,17 @@ The table assumes these patch sites:
 - **Forced keyframe:** `0x4370` (the check) and `0x452c` (the log value) in `passive_listener_thread`. `core.so` sends `forceKeyFrame` whenever `frame_count % N == 0`.
   - The idea is that one or two full IDR frames per second cause bursts on MOST.
   - Bridge-requested IDRs after latency recovery are unaffected.
+- **Cluster content:** the 32-byte string at `0x8130`. It is both the cluster display's `initialURL` and the URL in the `showUI` command that `delayed_alt_activation_thread` sends when the stream starts.
+  - Stock is `maps:/car/instrumentcluster/map`.
+  - `map-card` is `maps:/car/instrumentcluster`, which the iPhone renders as the map with Apple's turn card drawn on it.
+  - A third URL, `maps:/car/instrumentcluster/instructioncard` (card only), doesn't fit in place and isn't offered.
+  - The URLs come from the DiPlay project's notes ([PR #47](https://github.com/shihabal3amri/DiPlay/pull/47)), not from Apple documentation.
+- **Safe area:** the cluster `safeArea` from `create_area()` in `AirPlayCopyServerInfo`: x at `0x2ba4`, y at `0x2b94`, w at `0x2b98`, h at `0x2b9c`, inside the 800×480 view area.
+  - The iPhone lays out the map, the car marker and the turn card inside it, so changing it moves the card, and the map centre moves with it.
+  - `card-full` opens it to the full frame, to see where the iPhone places the card when unconstrained.
+  - Values must be ARM rotated immediates: any value from 0 to 255, multiples of 4 up to 1020, and so on. The script refuses anything else.
 
-Build a variant: `python3 patch-core-tuning.py [--max-fps N] [--keyframe-interval N] ../payload/profiles/MU1427/791/core.so out.so`. The script refuses any other input file.
+Build a variant: `python3 patch-core-tuning.py [--max-fps N] [--keyframe-interval N] [--cluster-content map|map-card] [--safe-area X,Y,W,H] ../payload/profiles/MU1427/791/core.so out.so`. The script refuses any other input file.
 
 ## Toolbox menu
 
@@ -40,6 +51,9 @@ You can tell each dump's variant three ways:
 
 - the `CORE_VARIANT-<name>` file in `summary.txt`;
 - `maxFPS` in the cluster display entry of `carplaymaps-video.log`;
-- the value logged with `alt-periodic-force-keyframe`.
+- the value logged with `alt-periodic-force-keyframe`;
+- the `url` in the `showUI` command, and `safeArea` in the cluster display entry, both in `carplaymaps-video.log`.
+
+For the turn-card variants, start navigation in Apple Maps and take photos of the cockpit display. They show where the card lands relative to the gauges and to what the cluster crops, which is what the next safe-area values depend on.
 
 To revert, pick **Stock**. "Install 791" and "Restore factory files" also discard the tuning.

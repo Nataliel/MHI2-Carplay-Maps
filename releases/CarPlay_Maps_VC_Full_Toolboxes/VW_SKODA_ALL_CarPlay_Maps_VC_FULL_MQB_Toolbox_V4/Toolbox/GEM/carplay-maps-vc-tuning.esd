@@ -32,5 +32,13 @@ script
     label   "30 fps, keyframe every 120 frames"
 
 script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card.sh"
+    label   "Map + turn card (stock fps/keyframes)"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_full.sh"
+    label   "Map + turn card, full-frame safe area (calibration)"
+
+script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
     label   "Show CarPlay Maps VC status (active tuning)"
