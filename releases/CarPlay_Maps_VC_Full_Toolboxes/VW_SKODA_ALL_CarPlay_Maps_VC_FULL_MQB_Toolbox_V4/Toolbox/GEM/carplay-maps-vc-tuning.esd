@@ -1,60 +1,27 @@
 ###########################################################################
-# CarPlay Maps VC - experimental stream tuning (MU1427 / 791 only)
+# CarPlay Maps VC - display options (MU1427 / 791 only)
 # Each entry swaps core.so; a full unit reboot is required afterwards.
-# Collect diagnostics before rebooting, the logs live in /ramdisk.
+# All options: 30 fps, forced keyframe every 20 frames.
 ###########################################################################
 screen carplay-maps-vc-tuning carplay-maps-vc
 
 keyValue
     value   String sys 0x00000000 0
-    label   "Experimental - MU1427 / 791 only"
-    poll    0
-
-keyValue
-    value   String sys 0x00000000 0
-    label   "Reboot after each swap; collect diagnostics first"
+    label   "MU1427 / 791 only - reboot after each change"
     poll    0
 
 script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_stock.sh"
-    label   "Stock: 40 fps, keyframe every 20 frames"
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_default.sh"
+    label   "Default: map + narrow turn card"
 
 script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_fps30.sh"
-    label   "30 fps, keyframe every 20 frames (no card)"
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_no_card.sh"
+    label   "Map only, no turn card"
 
 script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card.sh"
-    label   "40 fps + turn card, original position"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y120_w400.sh"
-    label   "30 fps + narrow turn card, top at y=120"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y80_w400.sh"
-    label   "30 fps + narrow turn card, top at y=80"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_w400.sh"
-    label   "30 fps + narrow turn card, top at y=88"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y96_w400.sh"
-    label   "30 fps + narrow turn card, top at y=96"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_h312.sh"
-    label   "30 fps + turn card y=88, safe area height 312"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_h240.sh"
-    label   "30 fps + turn card y=88, safe area height 240"
-
-script
-    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_card_y88_h160_w480.sh"
-    label   "30 fps + turn card y=88, height 160, original width"
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_wide_card.sh"
+    label   "Map + wide turn card"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
-    label   "Show CarPlay Maps VC status (active tuning)"
+    label   "Show CarPlay Maps VC status (active option)"

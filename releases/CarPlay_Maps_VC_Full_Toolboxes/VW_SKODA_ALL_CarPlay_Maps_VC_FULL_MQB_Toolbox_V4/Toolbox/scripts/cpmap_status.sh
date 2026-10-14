@@ -20,7 +20,7 @@ if [ -s "$ROOT/VERSION" ]; then
     echo "Version: `cat "$ROOT/VERSION"`"
     echo "Profile: `cat "$ROOT/PROFILE" 2>/dev/null`"
     echo "Runtime root: /mnt/app/carplaymaps"
-    tuning="stock (never tuned)"
+    tuning="default (never tuned)"
     for marker in "$ROOT"/CORE_VARIANT-*; do
         [ -e "$marker" ] && tuning="${marker##*/CORE_VARIANT-}"
     done

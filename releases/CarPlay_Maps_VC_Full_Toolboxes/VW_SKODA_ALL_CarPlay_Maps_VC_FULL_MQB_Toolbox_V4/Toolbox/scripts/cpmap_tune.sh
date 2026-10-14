@@ -1,6 +1,6 @@
 #!/bin/ksh
-# CarPlay Maps VC - activate an experimental core.so stream tuning variant.
-# Usage: cpmap_tune.sh <stock|fps30|kf120|fps30-kf120>  (called by cpmap_tune_*.sh)
+# CarPlay Maps VC - switch the installed core.so between the default and its tuning options.
+# Usage: cpmap_tune.sh <default|no-card|wide-card>  (called by cpmap_tune_*.sh)
 # Variants are read from SD: Custom/carplay_maps_vc/tuning/<MU>/<cluster>/<variant>/core.so
 # Takes effect after a full unit reboot. Collect diagnostics BEFORE rebooting.
 
