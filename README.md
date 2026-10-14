@@ -31,6 +31,7 @@ The public release uses the validated V70 display/control behavior as a fixed ba
 - CarPlay map video on the factory virtual cockpit.
 - Short steering-wheel press for map zoom in/out.
 - Long steering-wheel press for map-view switching.
+- MU1427 / 791 only: Apple Maps' turn card (next maneuver and distance), drawn by the iPhone on the cluster map. In the MQB Toolbox, Customization → CarPlay Maps VC → carplay-maps-vc-tuning switches between the default narrow card, a wide card and map only.
 - Exact MU1102, MU1367, MU1427 and MU1440 firmware gates.
 - Factory-file rollback evidence captured during installation.
 - Status, repeat-install and factory-restore paths.
@@ -39,7 +40,7 @@ The public release uses the validated V70 display/control behavior as a fixed ba
 ## Not included
 
 - Music metadata or cover art.
-- Navigation text, road names, maneuver or lane guidance.
+- Navigation text, road names, maneuver or lane guidance in the cockpit's own display (VW-style arrows). The MU1427 turn card above is part of the CarPlay video.
 - Startup animation.
 
 

@@ -5,13 +5,13 @@ Exact firmware identity: `/ifs/lsd.jxe` = **52,751,492 bytes** (identical on har
 
 | Cluster | Profile files | Display baseline |
 | --- | --- | --- |
-| 791 AID 12.3 | [`791_AID12.3`](./791_AID12.3/) | 40 fps, navigation centered |
+| 791 AID 12.3 | [`791_AID12.3`](./791_AID12.3/) | 30 fps, navigation centered, CarPlay turn card |
 
 These directories contain only the CarPlay Maps VC project files. They are not complete MQB or M.I.B. Toolbox distributions.
 
 ## What differs from MU1367
 
-The runtime payload is identical to MU1367/791 except `core.so`, which carries a one-byte fix (below). The installer also changed:
+The runtime payload is identical to MU1367/791 except `core.so`. It carries the one-byte AES fix (below) and the display settings described in [Display settings](#display-settings-core-so). The installer also changed:
 
 - `52751492` is recognised as `MU1427`; `MU1427:791` and `MU1427:790` are accepted profiles.
 - MU1427's factory `lsd.sh` has no `-Xbootclasspath/p:` line; it only uses `BOOTCLASSPATH=-Xbootclasspath/a:...`. When no such line exists, the installer adds one dedicated line directly before the single production launch `$J9 $VMOPTIONS $BOOTCLASSPATH -jxe $HMI_JXE &`:
@@ -32,10 +32,22 @@ The runtime payload is identical to MU1367/791 except `core.so`, which carries a
 The fix:
 
 - File offset `0x5284` changes `add r0, r8, #0x1c8` (`e2880f72`) to `add r0, r8, #0x1c0` (`e2880f70`).
-- sha256 before: `00b48a8f…`; after: `46da2689…`.
+- sha256 before: `00b48a8f…`; after: `46da2689…`. The shipped file adds the display settings below: `3e617cae…`.
 - [`791_AID12.3/patch-core-mu1427.py`](./791_AID12.3/patch-core-mu1427.py) reapplies and verifies it.
 - This is the only hard-coded session-struct offset in `core.so`.
 - Validated in the car on 2026-10-13 (iPhone over USB): the CarPlay map appears in the virtual cockpit.
+
+## Display settings (`core.so`)
+
+The shipped MU1427/791 `core.so` is the AES-fixed build with three more changes. They were chosen from in-car tests on 2026-10-13 and 2026-10-14, with an iPhone19,2 on iOS build 24A437:
+
+- **30 fps** advertised for the cluster display, instead of 40. The iPhone delivered about 25–27 fps either way, and 30 removed the stutter and lag.
+- **Map with turn card:** the cluster URL is `maps:/car/instrumentcluster` instead of `…/map`, so Apple Maps draws its maneuver card on the cluster map.
+- **Narrow safe area,** 400×380 at (200, 80) instead of 480×440 at (160, 20). The cockpit shows only about rows 80–400 of the 800×480 frame. This keeps the card just under the clock bar.
+
+The forced keyframe stays every 20 frames; 120 made direction changes appear too late.
+
+The MQB Toolbox menu "carplay-maps-vc-tuning" swaps between the default, a wide card (480 px wide at x = 160) and map only, all at 30 fps. [`791_AID12.3/tuning/`](./791_AID12.3/tuning/) has the patch sites, the test history and `build-mu1427-cores.sh`, which rebuilds every MU1427 `core.so` from the MU1367/791 build.
 
 ## Ignore navigation-active (MQB Toolbox) on MU1427
 
