@@ -62,4 +62,4 @@ The MQB Toolbox ships the options on the SD card under `Custom/carplay_maps_vc/t
 
 The card's size is decided by the iPhone from the guidance content (start-of-route text, distance, lane guidance, a "then" maneuver). Anchoring it at the top lets extra rows grow down into the map.
 
-Variants used in these tests can be rebuilt with `patch-core-tuning.py`. The toolbox builds that carried them, V4.2B to V4.2G, are in git history on this branch.
+Variants used in these tests can be rebuilt with `patch-core-tuning.py`; their toolbox menu entries are in the git history of this directory and of `Toolbox/GEM/carplay-maps-vc-tuning.esd`.
