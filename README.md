@@ -85,6 +85,8 @@ Optional: **Customization → Navigation → Ignore navigation-active status fro
 
 The options are read from the SD card (`Custom/carplay_maps_vc/tuning/`), so keep the card available when switching. **Show CarPlay Maps VC status** displays the active option.
 
+On **MU1367 / 790 AID 10.5**, the same menu switches between the same three options, plus two extra 790-only entries. **Map + lowered turn card** moves the card down in case the cockpit covers the top of the stream. **Original core** is the unmodified 40 fps core. The 790 options haven't been tested in a car yet. Details, including the 790 stream geometry (1010×376), are in [`MU1367/790_AID10.5/tuning/`](./MU1367/790_AID10.5/tuning/).
+
 The iPhone decides the card's size, and it grows with the guidance content (for example lane guidance). The receiver can't limit it. Technical details and the in-car test history are in [`MU1427/791_AID12.3/tuning/`](./MU1427/791_AID12.3/tuning/).
 
 ## Diagnostics and restore
@@ -100,6 +102,7 @@ The iPhone decides the card's size, and it grows with the guidance content (for 
 | [`MU1427/`](./MU1427/) | MU1427 notes: the `core.so` AES fix, the display settings, and offline verification against the factory package |
 | [`MU1427/791_AID12.3/`](./MU1427/791_AID12.3/) | Standalone MU1427/791 profile: installer, payload, `patch-core-mu1427.py` |
 | [`MU1427/791_AID12.3/tuning/`](./MU1427/791_AID12.3/tuning/) | `core.so` display patches, `build-mu1427-cores.sh` (rebuild and verify), test history |
+| [`MU1367/790_AID10.5/tuning/`](./MU1367/790_AID10.5/tuning/) | MU1367/790 `core.so` display patches (30 fps, turn card), `build-mu1367-790-cores.sh`, 790 stream geometry |
 | [`MU1427/NavActiveIgnore/`](./MU1427/NavActiveIgnore/) | MU1427 "Ignore navigation-active" build tooling and jar |
 | [`releases/CarPlay_Maps_VC_Full_Toolboxes/`](./releases/CarPlay_Maps_VC_Full_Toolboxes/) | Source tree of the full MQB Toolbox package and its SHA-256 manifest |
 | [`tests/`](./tests/) | Offline mock-install test |
@@ -116,7 +119,7 @@ The original release supports these firmware and cluster combinations:
 | MU1367 | 55,840,541 bytes | ✅ | ✅ |
 | MU1440 Škoda | 55,840,933 bytes | ❌ | ✅ |
 
-Those profiles ([`MU1102/`](./MU1102/), [`MU1367/`](./MU1367/), [`MU1440_SKODA/`](./MU1440_SKODA/)) are kept here unchanged from upstream. For them, use the original project and its releases.
+Those profiles ([`MU1102/`](./MU1102/), [`MU1367/`](./MU1367/), [`MU1440_SKODA/`](./MU1440_SKODA/)) are kept here unchanged from upstream, except the MU1367/790 display update above. For them, use the original project and its releases.
 
 ## Open-source notice
 

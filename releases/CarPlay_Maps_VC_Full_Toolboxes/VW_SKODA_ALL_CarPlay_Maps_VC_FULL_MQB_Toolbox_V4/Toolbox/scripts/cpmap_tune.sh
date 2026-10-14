@@ -1,6 +1,7 @@
 #!/bin/ksh
 # CarPlay Maps VC - switch the installed core.so between the default and its tuning options.
-# Usage: cpmap_tune.sh <default|no-card|wide-card>  (called by cpmap_tune_*.sh)
+# Usage: cpmap_tune.sh <default|no-card|wide-card|low-card|stock-40fps>  (called by cpmap_tune_*.sh)
+# Profiles: MU1427/791 and MU1367/790. low-card and stock-40fps exist for MU1367/790 only.
 # Variants are read from SD: Custom/carplay_maps_vc/tuning/<MU>/<cluster>/<variant>/core.so
 # Takes effect after a full unit reboot. Collect diagnostics BEFORE rebooting.
 
@@ -27,7 +28,7 @@ ROOT="$MMX/mnt/app/carplaymaps"
 [ -s "$ROOT/core.so" ] || fail "CARPLAY_MAPS_VC_NOT_INSTALLED"
 PROFILE=`cat "$ROOT/PROFILE" 2>/dev/null`
 case "$PROFILE" in
-    MU1427/791) ;;
+    MU1427/791|MU1367/790) ;;
     *) fail "NO_TUNING_FOR_PROFILE_$PROFILE" ;;
 esac
 

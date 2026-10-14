@@ -1,13 +1,13 @@
 ###########################################################################
-# CarPlay Maps VC - display options (MU1427 / 791 only)
+# CarPlay Maps VC - display options (MU1427 / 791 and MU1367 / 790)
 # Each entry swaps core.so; a full unit reboot is required afterwards.
-# All options: 30 fps, forced keyframe every 20 frames.
+# All options except "Original core": 30 fps, forced keyframe every 20 frames.
 ###########################################################################
 screen carplay-maps-vc-tuning carplay-maps-vc
 
 keyValue
     value   String sys 0x00000000 0
-    label   "MU1427 / 791 only - reboot after each change"
+    label   "MU1427 / 791 and MU1367 / 790 only - reboot after each change"
     poll    0
 
 script
@@ -21,6 +21,14 @@ script
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_wide_card.sh"
     label   "Map + wide turn card"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_low_card.sh"
+    label   "790 only: map + lowered turn card"
+
+script
+    value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_tune_stock_40fps.sh"
+    label   "790 only: original core (40 fps, map only)"
 
 script
     value   sys 1 0x0100 "/eso/hmi/engdefs/scripts/mqb/cpmap_status.sh"
