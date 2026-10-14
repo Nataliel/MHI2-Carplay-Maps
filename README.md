@@ -52,11 +52,9 @@ The package still contains the original project's profiles for other firmware ([
 
 ## Download
 
-**MQB Toolbox V4.2A with CarPlay Maps VC:** [latest release](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/tag/toolbox-plaintext-v1.3.0) *(placeholder: the link becomes active once the release is published)*
+**MQB Toolbox V4.2A with CarPlay Maps VC:** release [`toolbox-plaintext-v1.3.0`](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/tag/toolbox-plaintext-v1.3.0). Direct download: [CarPlay_Maps_VC_FULL_MQB_Toolbox_V4.2A.zip](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/download/toolbox-plaintext-v1.3.0/CarPlay_Maps_VC_FULL_MQB_Toolbox_V4.2A.zip)
 
-<!-- TODO: point to the published release and asset once it exists. -->
-
-Verify the archive with the SHA-256 manifest published in the release ([`FULL_TOOLBOX_SHA256.txt`](./releases/CarPlay_Maps_VC_Full_Toolboxes/FULL_TOOLBOX_SHA256.txt) in this repository).
+Verify the archive with the release's [SHA-256 manifest](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/download/toolbox-plaintext-v1.3.0/FULL_TOOLBOX_SHA256.txt). Its sha256 is `90ee99d17ac70e7653790577c53fe8d248151840ca65aa7ca6ea55eb0ac2df50`.
 
 ## Installation
 
