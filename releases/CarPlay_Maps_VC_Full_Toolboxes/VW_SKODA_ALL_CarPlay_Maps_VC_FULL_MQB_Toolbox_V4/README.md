@@ -1,62 +1,70 @@
 # MIB2 High toolbox
-The ultimate MIB2-HIGH toolbox for all your MIB2 High customization needs.
 
-Note: this screen has the potential to ruin your MIB2 HIGH unit. The developers are not responsible for any troubles to anyone or anything caused by this toolbox.
-It's never our intention to harm any person, car or brand. Use the tools wisely, don't be a douche.
+Escolha seu idioma:
+- [Português (Brasil)](./README.md)
+- [English](./README.en-US.md)
 
-Note2: This is **not** a universal Jailbreak-like solution for all your needs and firmware versions.
+---
 
-Note3: If you're a business that tries to make a profit off of this:  Don't be an asshole, don't charge money for this. This project is done in our free time, out of love for the community. I've risked bricking my own hardware while testing, and invested a lot of time in the research. Instead of making money, why not support this project with your knowledge or a [small donation](https://paypal.me/chillout1) or become a [Patreon](https://patreon.com/jille). 
+A melhor toolbox MIB2-HIGH para todas as suas necessidades de personalização do MIB2 High.
 
-# Requirements
-- Read the entire readme
-- At least 1 healthy set of brains
-- An MIB2 HIGH or MIB2.5 HIGH infotainment unit. It will **not** work on MIB1 or MIB2 Standard units. Discover Media / Composition Media is not MIB2 HIGH! For MIB2 Standard see the [olli991/mib-std2-pq-zr-toolbox](https://github.com/olli991/mib-std2-pq-zr-toolbox) project.
-- 1 empty, **FAT32 formatted** SD-card, with enough space. Everything bigger than 1GB is fine
-- Some place to save your backups
+Nota: esta tela tem o potencial de danificar sua unidade MIB2 HIGH. Os desenvolvedores não são responsáveis por quaisquer problemas a qualquer pessoa ou coisa causados por esta toolbox.
+Nunca é nossa intenção prejudicar qualquer pessoa, carro ou marca. Use as ferramentas com sabedoria, não seja um idiota.
 
-## Optional requirements ##
-- Python 3, if you want to extract/compress graphics containers (canim/mcf)
-- A text-editor, if you want to make your own green menu files or scripts
-- Picture editing software, if you want to customize graphics files
+Nota2: Esta **não** é uma solução universal tipo Jailbreak para todas as suas necessidades e versões de firmware.
 
-# How to install
-- If you've installed a previous version (before V4.0) of the toolbox: clean your SD-card before trying to install.
-- Download all files from the repository. This can be either as a git clone or "Download zip" from github then extract the zip.
-- Put all files and folders on an empty SD-card, preferable >1GB.
-- Put the SD-card in one of the slots of your MIB2-unit. 
-- Make sure there's only 1 SD-card in your unit, otherwise the scripts don't know where to look.
-- Hold the MENU button on your MIB2 until the service screen appears.
-- Select the "Software updates/versions" menu, then hit the "Update" button in top right corner.
-- Select the SD-card and select MQB Coding MIB2 Toolbox.
-- Let the unit run the entire software update. It will reboot several times before showing a screen listing a lot of modules as N/A. The Toolbox line should be Y. You can then hit the back button in the top right corner. 
-- When it's done, it will ask you to connect a computer and clear the error codes. This is not needed, you can hit the "Cancel" button..
-- The unit will restart one final time and you're back at the main car menu. Installation is now done.
-- Hold the MENU button, and go to TESTMODE. On older versions you can go to the developer menu by holding the MENU button for about 10 seconds.
-- Go to the Green Developer Menu
-- There will be an additional menu called "mqbcoding". When you see this, the installation was succesful.
-- Go to mqbcoding, and you will see the following:
+Nota3: Se você é uma empresa que tenta lucrar com isso: Não seja um egoísta, não cobre dinheiro por isso. Este projeto é feito em nosso tempo livre, por amor à comunidade. Eu arrisquei danificar meu próprio hardware durante os testes e investi muito tempo na pesquisa. Em vez de ganhar dinheiro, por que não apoiar este projeto com seu conhecimento ou uma [pequena doação](https://paypal.me/chillout1) ou se tornar um [Patreon](https://patreon.com/jille).
 
-![The MQB Coding toolbox menu](https://i.imgur.com/wGUZ4xw.png)
+# Requisitos
+- Leia o README completo
+- Pelo menos 1 conjunto saudável de cérebros
+- Uma unidade de infotainment MIB2 HIGH ou MIB2.5 HIGH. Não funcionará em unidades MIB1 ou MIB2 Standard. Discover Media / Composition Media não é MIB2 HIGH! Para MIB2 Standard, consulte o projeto [olli991/mib-std2-pq-zr-toolbox](https://github.com/olli991/mib-std2-pq-zr-toolbox).
+- 1 cartão SD vazio, **formatado em FAT32**, com espaço suficiente. Qualquer coisa maior que 1GB está bom.
+- Algum lugar para salvar seus backups
 
-- You're now done.
-- Enjoy!
+## Requisitos opcionais ##
+- Python 3, se você quiser extrair/comprimir containers de gráficos (canim/mcf)
+- Um editor de texto, se você quiser criar seus próprios arquivos ou scripts de Green Menu
+- Software de edição de imagens, se você quiser personalizar arquivos de gráficos
 
-# How to do a manual installation
-- Put the mib2-toolbox on an SD-card and insert it into the MIB-unit SD1 slot.
-- Make a connection to the debug console of the unit (either via D-Link Dub-E100 or ASIX AX88179 on the USB port, or serial interface on the back of the unit)
-- Log in
-- Mount the SD card:
-  * `mount -uw /net/mmx/fs/sda0` 
-- Run the finalScript:  
+# Como instalar
+- Se você instalou uma versão anterior (antes da V4.0) da toolbox: limpe seu cartão SD antes de tentar instalar.
+- Baixe todos os arquivos do repositório. Isso pode ser feito via `git clone` ou "Download zip" do GitHub e depois extraia o zip.
+- Coloque todos os arquivos e pastas em um cartão SD vazio, de preferência >1GB.
+- Insira o cartão SD em um dos slots da sua unidade MIB2.
+- Certifique-se de que há apenas 1 cartão SD na sua unidade, caso contrário, os scripts não saberão onde procurar.
+- Mantenha o botão MENU no seu MIB2 pressionado até que a tela de serviço apareça.
+- Selecione o menu "Software updates/versions", então clique no botão "Update" no canto superior direito.
+- Selecione o cartão SD e escolha "MQB Coding MIB2 Toolbox".
+- Deixe a unidade executar a atualização completa do software. Ela reiniciará várias vezes antes de mostrar uma tela listando muitos módulos como N/A. A linha "Toolbox" deve ser Y. Você pode então clicar no botão "back" no canto superior direito.
+- Quando terminar, ele pedirá para você conectar um computador e limpar os códigos de erro. Isso não é necessário, você pode clicar no botão "Cancel".
+- A unidade reiniciará uma última vez e você estará de volta ao menu principal do carro. A instalação está concluída.
+- Mantenha o botão MENU pressionado e vá para TESTMODE. Em versões mais antigas, você pode ir ao menu do desenvolvedor mantendo o botão MENU pressionado por cerca de 10 segundos.
+- Vá para o Green Developer Menu.
+- Haverá um menu adicional chamado "mqbcoding". Ao vê-lo, a instalação foi bem-sucedida.
+- Vá para "mqbcoding" e você verá o seguinte:
+
+![O menu da MQB Coding toolbox](https://i.imgur.com/wGUZ4xw.png)
+
+- Você terminou.
+- Aproveite!
+
+# Como fazer uma instalação manual
+- Coloque a `mib2-toolbox` em um cartão SD e insira-o no slot SD1 da unidade MIB.
+- Faça uma conexão com o `debug console` da unidade (através de D-Link Dub-E100 ou ASIX AX88179 na porta USB, ou `serial interface` na parte traseira da unidade).
+- Faça `log in`.
+- Monte o cartão SD:
+  * `mount -uw /net/mmx/fs/sda0`
+- Execute o `finalScript`:
   * `sh /net/mmx/fs/sda0/Toolbox/final/finalScripts.sh`
 
-- Hold the MENU button, and go to TESTMODE. On older versions you can go to the developer menu by holding the MENU button for about 10 seconds.
-- Go to the Green Developer Menu
-- There will be an additional menu called "mqbcoding". When you see this, the installation was succesful.
-- You're now done.
-- Enjoy!
+- Mantenha o botão MENU pressionado e vá para TESTMODE. Em versões mais antigas, você pode ir ao menu do desenvolvedor mantendo o botão MENU pressionado por cerca de 10 segundos.
+- Vá para o Green Developer Menu.
+- Haverá um menu adicional chamado "mqbcoding". Ao vê-lo, a instalação foi bem-sucedida.
+- Você terminou.
+- Aproveite!
 
+# Visão geral da tela Green Menu:
 # Green menu screen overview:
 
 ```
@@ -98,69 +106,66 @@ MQBCoding Main
 |
 +---Uninstall                           # Uninstalls and or cleans up the MIB Toolbox
 ```
-
-# How to use the new screens
-Most screens have a description inside, or show information when running a script. It's always wise to have an SD-card in slot 1.
+# Como usar as novas telas
+A maioria das telas tem uma descrição interna ou mostra informações ao executar um script. É sempre prudente ter um cartão SD no slot 1.
 
 ## dump
-Here you can dump various things which you need to customise you unit. Make sure a SD-card is inserted.
+Aqui você pode despejar várias coisas que você precisa para personalizar sua unidade. Certifique-se de que um cartão SD esteja inserido.
 
 ## customization
 ### androidauto
-This screen has 2 buttons:
-- Patch Android Auto to enable custom third party apps. No root is needed on your phone.
-- Recover the original gal.json file in case you didn't like the patch or something is not working right.
+Esta tela possui 2 botões:
+- `Patch Android Auto` para habilitar aplicativos de terceiros personalizados. Não é necessário `root` no seu telefone.
+- Restaurar o arquivo `gal.json` original caso você não tenha gostado do `patch` ou algo não esteja funcionando corretamente.
 
 ### skin
-This screen lets you install new images.mcf for each of the 6 skin-folders, from the SkinFiles folder on your SD-card. Use the dump files as a guideline. Don't install any files that are meant for other firmwares because it **will** mess up your graphics and functionalities of your infotainment unit.
-This screen will also let you recover the skins from backup.
+Esta tela permite que você instale novos `images.mcf` para cada uma das 6 pastas de `skin`, da pasta `SkinFiles` no seu cartão SD. Use os arquivos `dump` como guia. Não instale arquivos que são destinados a outros firmwares porque isso **irá** bagunçar seus gráficos e funcionalidades da sua unidade de infotainment.
+Esta tela também permitirá que você recupere os `skins` do backup.
 
-## greenmenu
-This screen will let you import new .esd files from the GreenMenu folder on your SD-card.
+### greenmenu
+Esta tela permitirá que você importe novos arquivos `.esd` da pasta `GreenMenu` no seu cartão SD.
 
-# How to use the tools
-In the Tools folder you will find a couple of tools:
+# Como usar as ferramentas
+Na pasta `Tools`, você encontrará algumas ferramentas:
 - extract-canim.py
 
-These are Python-scripts to extract startup screen files (.canim files) in 2 formats. If one of the scripts doesn't extract your canim, try the other one. Both work in the same way: extract_canim.py <filename> <outdir>, for instance: 
-
+Estes são scripts Python para extrair arquivos de tela de inicialização (`.canim files`) em 2 formatos. Se um dos scripts não extrair seu `canim`, tente o outro. Ambos funcionam da mesma forma: `extract_canim.py <filename> <outdir>`, por exemplo:
+extract_canim.py test.canim .\testfiles\
 ```extract_canim.py test.canim .\testfiles\```
 
 - extract-mcf.py
- 
-This a python script to extract skinfile containers (mcf) and it works similar to the canim-extract: extract_mcf.py <filename> <outdir>, for instance:
- 
+Este é um script Python para extrair `containers` de `skinfile` (`mcf`) e funciona de forma semelhante ao `canim-extract`: `extract_mcf.py <filename> <outdir>`, por exemplo:
+
  ```extract_mcf.py images.mcf .\extracted\```
  
  
 - compress-canim.py
 
-This is the script to compress the startup-screens. Make sure you use the same compress-method you used when extracting. Usage: compress-canim.py <original-file> <new-file> <imagesdir>, for instance:
-
+Este é o script para comprimir as `startup-screens`. Certifique-se de usar o mesmo `compress-method` que você usou ao extrair. Uso: `compress-canim.
+extract_mcf.py images.mcf .\extracted\
 ```compress-canim.py test.canim modified.canim .\testfiles\```
 
 - compress-mcf.py
-This is the script to compress the MCF-container. Usage: compress-mif.py <original-file> <new-file> <imagesdir>, for instance:
-  
+
+Este é o script para comprimir MCF-container.
 ```compress-mcf.py images.mcf images2.mcf .\extracted\```
 
 - extract-cff.py
-This script can extract images.cff files, container files for navigation icons and materials. Usage: extract-cff.py <output dir>, for instance:
-  
+
+Este é o script para extrair imagess de `cff` (container files) em formato `png`.
 ```extract-cff.py images.cff c:\extracted\```
 
-
 ## F.A.Q.
-If you run into any issues, consult the [F.A.Q.](https://github.com/jilleb/mib2-toolbox/blob/master/FAQ.md).
+Se você encontrar algum problema, consulte o [F.A.Q.](https://github.com/jilleb/mib2-toolbox/blob/master/FAQ.md).
 
-## Supported firmware versions
-This toolbox probably doesn't work on all available firmware versions but the current SD-card installtion proves to be mostly compatible with most firmwares.
+## Versões de firmware suportadas
+Esta `toolbox` provavelmente não funciona em todas as versões de `firmware` disponíveis, mas a instalação atual via cartão SD prova ser majoritariamente compatível com a maioria dos `firmwares`.
 
 
-# Disclaimer:
-**Warning** These screens have the potential to break your unit and void your warranty. Be careful. We are not responsible for any troubles to you, your car or software. MQB Coding is always looking for cool hacks and retrofits to increase the potential of the MQB platform. It's never our intention to harm any person, car or brand.
+# Aviso legal:
+**Atenção** Estas telas têm o potencial de danificar sua unidade e anular sua garantia. Tenha cuidado. Não somos responsáveis por quaisquer problemas a você, seu carro ou software. MQB Coding está sempre procurando por `hacks` e `retrofitts` interessantes para aumentar o potencial da plataforma MQB. Nunca é nossa intenção prejudicar qualquer pessoa, carro ou marca.
 
-## Support this project
+## Apoie este projeto
 
-You're always welcome to support this project with your knowledge, ideas or a [small donation](https://paypal.me/chillout1) to my Paypal or [Patreon](https://patreon.com/jille). 
-
+Você é sempre bem-vindo para apoiar este projeto com seu conhecimento, ideias ou uma [pequena doação](https://paypal.me/chillout1) para meu Paypal ou [Patreon](https://patreon.com/jille).
+```extract-cff.py images.cff c:\extracted\```
