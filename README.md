@@ -8,7 +8,7 @@
 
 # CarPlay Maps VC para MHI2: MU1427 / AID 791
 
-**Mapa do Apple CarPlay com cartão de navegação curva a curva no Volkswagen Active Info Display (cockpit virtual), para firmware MHI2 MU1427.**
+**Mapa do Apple CarPlay e Waze com cartão de navegação curva a curva no Volkswagen Active Info Display (cockpit virtual), para firmware MHI2 MU1367 / AID 791.**
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-MHI2%20%2F%20QNX%206.5-2f6f9f?style=flat-square)
@@ -28,87 +28,71 @@ Este projeto é um fork de **[tomasz-twardzicki](https://github.com/tomasz-tward
 
 ## <a id="overview-pt"></a>Visão Geral
 
-Este fork leva o projeto CarPlay Maps VC para unidades MHI2 com firmware **MU1427** e o cockpit virtual **791 AID 12.3**. A versão original não funciona neste firmware.
+Este fork leva o projeto CarPlay Maps VC para unidades MHI2 com firmware **MU1367** e o cockpit virtual **791 AID 12.3**. A versão original não funciona neste firmware.
 
-Ele envia o vídeo do mapa do CarPlay para o cockpit, desenha o cartão de navegação do Apple Maps nele e corrige o patch "Ignore navigation-active" para MU1427. Tudo é enviado como um pacote MQB Toolbox pronto para extração.
+Ele envia o vídeo do mapa do CarPlay para o cockpit, desenha o cartão de navegação do Apple Maps. Tudo é enviado como um pacote MQB Toolbox pronto para extração.
 
-## <a id="features-pt"></a>Recursos (MU1427 / 791)
+## <a id="features-pt"></a>Recursos (MU1367 / 791)
 
-- **Mapa do CarPlay no cockpit virtual.** A pilha AirPlay mais antiga do MU1427 (210.81) mantém a chave AES do fluxo do cluster em um offset diferente. `core.so` é corrigido para corresponder; sem isso, cada quadro é descriptografado como lixo.
+- **Mapa do CarPlay no cockpit virtual.** A pilha AirPlay mais antiga do MU1367 mantém a chave AES do fluxo do cluster em um offset diferente. `core.so` é corrigido para corresponder; sem isso, cada quadro é descriptografado como lixo.
 - **Cartão de navegação curva a curva.** O iPhone desenha o cartão de próxima manobra do Apple Maps (seta e distância) no mapa do cockpit, com o nome da rua ao lado do carro. O cartão fica logo abaixo da barra do relógio.
-- **Fluxo suave.** O fluxo do cockpit solicita 30 fps em vez de 40, o que removeu a gagueira e o atraso vistos no carro.
-- **Opções de exibição no menu da toolbox:** o cartão de navegação estreito padrão, um cartão de navegação largo ou apenas o mapa.
+- **Fluxo suave.** O fluxo do cockpit solicita 40 fps, o que removeu a gagueira e o atraso vistos no carro.
 - **Controle pelo volante:** toque curto para ampliar o mapa, toque longo para alternar as visualizações do mapa (do projeto original).
-- **"Ignorar navegação ativa" para MU1427:** mantém o mapa de navegação de fábrica funcionando no cockpit enquanto o CarPlay navega. O patch genérico da toolbox impede o CarPlay de iniciar no MU1427, então este pacote inclui uma compilação feita a partir das próprias classes HMI do MU1427. O script de instalação o seleciona automaticamente.
 - **Status, diagnóstico e restauração** no menu da toolbox.
 
 Não incluído: metadados de música ou capa do álbum, e navegação curva a curva mostrada nos próprios gráficos de navegação do cockpit (setas estilo VW). O cartão de navegação faz parte do vídeo do CarPlay, desenhado pelo iPhone.
 
 ## <a id="compatibility-pt"></a>Compatibilidade
 
-| | Suportado |
-| --- | --- |
-| Firmware | **MU1427** (`MHI2_ER_VWG11_K3342_MU1427`), identificado por `/ifs/lsd.jxe` = **52.751.492 bytes** |
-| Cluster | **791 AID 12.3** |
-| Telefone | iPhone via USB. Testado com iPhone19,2 no iOS build 24A437; o cartão de navegação precisa de um iOS recente. |
+|          | Suportado                                                                                                |
+|----------|----------------------------------------------------------------------------------------------------------|
+| Firmware | **MU1367** (`MHI2_ER_VWG13_K4525_MU1367`), identificado por `/ifs/lsd.jxe` = **55,840,541 bytes**        |
+| Cluster  | **791 AID 12.3**                                                                                         |
+| Telefone | iPhone via USB. Testado com iPhone15 Pro no iOS 27.0.1; o cartão de navegação precisa de um iOS recente. |
+| Carro    | Passat B8 2018                                                                                           |
 
-O instalador verifica o tamanho exato do firmware e o perfil do cluster, e para antes de alterar qualquer arquivo de fábrica se eles não corresponderem. O instalador 790 recusa o MU1427.
+O instalador verifica o tamanho exato do firmware e o perfil do cluster, e para antes de alterar qualquer arquivo de fábrica se eles não corresponderem.
 
 O pacote ainda contém os perfis do projeto original para outros firmwares ([veja abaixo](#origin-and-upstream-project-pt)). Este fork não os alterou nem os retestou.
 
 ## <a id="download-pt"></a>Download
 
-**MQB Toolbox V4.2A com CarPlay Maps VC:** lançamento [`toolbox-plaintext-v1.3.0`](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/tag/toolbox-plaintext-v1.3.0). Download direto: [CarPlay_Maps_VC_FULL_MQB_Toolbox_V4.2A.zip](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/download/toolbox-plaintext-v1.3.0/CarPlay_Maps_VC_FULL_MQB_Toolbox_V4.2A.zip)
-
-Verifique o arquivo com o [manifesto SHA-256](https://github.com/tomasz-twardzicki/MHI2-Carplay-Maps/releases/download/toolbox-plaintext-v1.3.0/FULL_TOOLBOX_SHA256.txt) do lançamento. Seu sha256 é `90ee99d17ac70e7653790577c53fe8d248151840ca65aa7ca6ea55eb0ac2df50`.
+**MQB Toolbox V4.2A com CarPlay Maps VC:** Download direto: [CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip](https://github.com/Nataliel/MHI2-Carplay-Maps/download/releases/CarPlay_Maps_Waze_MQB_Toolboxes/CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip)
 
 ## <a id="installation-pt"></a>Instalação
 
-Apenas uma rota de instalação é suportada: o pacote completo do MQB Toolbox.
-
-1. Baixe o arquivo MQB Toolbox V4.2A e verifique seu SHA-256.
-2. Extraia seu conteúdo **diretamente para a raiz** de um cartão SD.
-3. Insira o cartão e instale ou atualize o MQB Toolbox na unidade.
-4. Abra **Customization → CarPlay Maps VC** e selecione **Install 791 AID 12.3 (AUTO MU)**. O instalador detecta o MU1427 automaticamente.
-5. Aguarde por `CPMAP_INSTALL_OK`, em seguida, saia da toolbox e faça **uma reinicialização completa da unidade**.
-6. Conecte o iPhone, inicie uma rota no Apple Maps e verifique o mapa do cockpit, o cartão de navegação e os controles do volante.
-
 Mantenha a energia estável durante todo o processo. Não remova o cartão enquanto a unidade estiver gravando, e nunca instale ou depure enquanto estiver dirigindo.
 
-Opcional: **Customization → Navigation → Ignore navigation-active status from smartphone** mantém a navegação de fábrica funcionando no cockpit enquanto o CarPlay navega. Desfaça isso com **Uninstall Ignore navigation-active** no mesmo menu.
+**Se certifique que o Firmware da sua multimidia está na com a MU1367 (`MHI2_ER_VWG13_K4525_MU1367`), caso contrario não vai funcionar.**
 
-**Atualizando de uma versão anterior do MU1427:** atualize a toolbox do novo pacote, execute a instalação novamente ou escolha **Default** nas opções de exibição. Reinicie depois.
+Apenas uma rota de instalação é suportada: o pacote completo do MQB Toolbox.
 
-## <a id="display-options-pt"></a>Opções de Exibição
+1. Baixe o arquivo CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip.
+2. Extraia seu conteúdo em uma pasta e depois copie o conteudo **diretamente para a raiz** de um cartão SD.
+3. Insira o cartão e instale ou atualize o MQB Toolbox na unidade (seu Multimidia).
+4. Abra **Customization → Navigation → Ignore navigation-active status from smartphone**. Depois disso reinicie a unidade segurando o botão liga/desliga até aparecer o logo da VW.
+5. Abra **Customization → CarPlay Maps VC** e selecione **Install 791 AID 12.3 (AUTO MU)**. O instalador detecta o MU1367 automaticamente.
+6. Aguarde por `CPMAP_INSTALL_OK`, em seguida, saia da toolbox e faça **uma reinicialização completa da unidade**. Depois disso reinicie a unidade segurando o botão liga/desliga até aparecer o logo da VW.
+7. Conecte o cabo no iPhone, inicie uma rota no Waze / Apple Maps / Google Maps e verifique o mapa do cockpit, o cartão de navegação e os controles do volante.
 
-**Customization → CarPlay Maps VC → carplay-maps-vc-tuning** alterna a visualização do cockpit. Cada opção funciona a 30 fps e requer uma reinicialização completa após a troca.
 
-| Opção | Visualização do Cockpit |
-| --- | --- |
-| **Padrão** | Mapa com um cartão de navegação estreito abaixo da barra do relógio |
-| **Mapa + cartão de navegação largo** | Mesma posição, cartão mais largo |
-| **Apenas mapa, sem cartão de navegação** | Mapa sem o cartão |
+**Atualizando de uma versão anterior do MU1367:** 
 
-As opções são lidas do cartão SD (`Custom/carplay_maps_vc/tuning/`), então mantenha o cartão disponível ao alternar. **Show CarPlay Maps VC status** exibe a opção ativa.
+Instale o firmware com MU1367, sites como esses podem ajudar: https://mibsolution.one/index.php/f/17315 e https://mibvault.com/files/MHI2%20-%20HARMAN/Firmware/VW
 
-O iPhone decide o tamanho do cartão, e ele cresce com o conteúdo da orientação (por exemplo, orientação de faixa). O receptor não pode limitá-lo. Detalhes técnicos e o histórico de testes no carro estão em [`MU1427/791_AID12.3/tuning/`](./MU1427/791_AID12.3/tuning/).
+Segure o botão Menu da multimidia para abrir a atualização do SW, em seguida, selecione **Atualizar**. Aguarde o processo de instalação, vai reiniciar algumas vezes.
+
+Segure o botão Menu da multimidia mais uma vez para se certificar que a versão correta foi instalada.
+
+Agora atualize a toolbox do novo pacote, baixe a versão [CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip], extrai para um cartão SD.
+
+Segure o botão Menu da multimidia para abrir a atualização do SW, em seguida, selecione **Atualizar**. Selecione **SD Card**, e aguarde o processo de instalação, vai reiniciar algumas vezes.
 
 ## <a id="diagnostics-pt"></a>Diagnóstico e restauração
 
 - **Coletar diagnósticos para SD:** grava `Log/cpmap-diag-<time>/` no cartão, sem modificar a unidade. Execute-o antes de reiniciar, porque os logs de tempo de execução vivem em `/ramdisk` e são limpos na reinicialização.
 - **Mostrar status do CarPlay Maps VC:** firmware, perfil instalado e opção de exibição ativa.
 - **Restaurar arquivos de fábrica:** coloca os arquivos `dio_manager` e `lsd.sh` de fábrica de volta e remove o tempo de execução. Uma reinicialização completa é necessária depois.
-
-## <a id="repository-layout-pt"></a>Estrutura do Repositório
-
-| Caminho | Conteúdo |
-| --- | --- |
-| [`MU1427/`](./MU1427/) | Notas do MU1427: a correção AES de `core.so`, as configurações de exibição e verificação offline contra o pacote de fábrica |
-| [`MU1427/791_AID12.3/`](./MU1427/791_AID12.3/) | Perfil MU1427/791 autônomo: instalador, payload, `patch-core-mu1427.py` |
-| [`MU1427/791_AID12.3/tuning/`](./MU1427/791_AID12.3/tuning/) | Patches de exibição de `core.so`, `build-mu1427-cores.sh` (recompilar e verificar), histórico de testes |
-| [`MU1427/NavActiveIgnore/`](./MU1427/NavActiveIgnore/) | Ferramentas de construção e jar "Ignorar navegação ativa" do MU1427 |
-| [`releases/CarPlay_Maps_VC_Full_Toolboxes/`](./releases/CarPlay_Maps_VC_Full_Toolboxes/) | Árvore de origem do pacote completo do MQB Toolbox e seu manifesto SHA-256 |
-| [`tests/`](./tests/) | Teste de mock-install offline |
 
 ## <a id="origin-and-upstream-project-pt"></a>Origem e Projeto Upstream
 
@@ -126,7 +110,7 @@ Esses perfis ([`MU1102/`](./MU1102/), [`MU1367/`](./MU1367/), [`MU1440_SKODA/`](
 
 ## <a id="open-source-notice-pt"></a>Aviso de Código Aberto
 
-- Autor original do CarPlay Maps VC: **omonob (QCDWJ)**. Adaptação MU1427, opções de exibição e documentação neste fork: **tomasz-twardzicki**.
+- Autor original do CarPlay Maps VC: **omonob (QCDWJ)**. Adaptação MU1427, opções de exibição e documentação neste fork: **tomasz-twardzicki**. Adaptação MU1367, com Waze e Google Maps estaveis: **Nataliel**.
 - Os scripts de integração, lógica de compilação e documentação são licenciados sob a [GNU GPL v3](LICENSE). A redistribuição deve manter a atribuição e os termos da licença e fornecer o código-fonte correspondente conforme exigido pela GPLv3.
 - MQB Toolbox, Volkswagen, Škoda, Apple, CarPlay, Apple Maps e outros componentes, nomes e marcas registradas de terceiros pertencem aos seus respectivos proprietários. A GPLv3 não relicencia firmware, toolbox ou componentes de fornecedores de terceiros.
 - O toolbox completo é fornecido apenas para fornecer um layout de cartão SD pronto para uso; arquivos upstream e avisos de licença são mantidos intactos.
