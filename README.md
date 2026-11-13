@@ -57,7 +57,9 @@ O pacote ainda contém os perfis do projeto original para outros firmwares ([vej
 
 ## <a id="download-pt"></a>Download
 
-**MQB Toolbox V4.2A com CarPlay Maps VC:** Download direto: [CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip](https://github.com/Nataliel/MHI2-Carplay-Maps/download/releases/CarPlay_Maps_Waze_MQB_Toolboxes/CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip)
+**MQB Toolbox V4.2A com CarPlay Maps VC + Android Auto no painel (v2.0.0, mais recente):** release [`v2.0.0`](https://github.com/Nataliel/MHI2-Carplay-Maps/releases/tag/v2.0.0). Download direto: [CarPlay_Maps_AndroidAuto_MQB_Toolbox_V2.0.0.zip](https://github.com/Nataliel/MHI2-Carplay-Maps/releases/download/v2.0.0/CarPlay_Maps_AndroidAuto_MQB_Toolbox_V2.0.0.zip). Verifique o arquivo com o [manifesto SHA-256](https://github.com/Nataliel/MHI2-Carplay-Maps/releases/download/v2.0.0/FULL_TOOLBOX_SHA256.txt) (`a4bfce3a477ec3c1bd6ff85b7076b744ab187602725513b7d4c67c756bca6147`).
+
+**MQB Toolbox V4.2A com CarPlay Maps VC (apenas Waze, v1.1.0):** Download direto: [CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip](https://github.com/Nataliel/MHI2-Carplay-Maps/download/releases/CarPlay_Maps_Waze_MQB_Toolboxes/CarPlay_Maps_Waze_MQB_Toolbox_V1.1.0.zip)
 
 ## <a id="installation-pt"></a>Instalação
 
